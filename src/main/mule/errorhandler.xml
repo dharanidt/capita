@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="53c4b021-4623-4b74-8928-375ba01e57d6" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="errorhandlerFlow" doc:id="b87084a1-008a-488b-ab1f-143e518c1dd4" >
+		<http:listener doc:name="Listener" doc:id="006c8e72-e2d2-4905-9bf1-6756378f18aa" config-ref="HTTP_Listener_config" path="/test"/>
+		<set-payload value='#["hello word"]' doc:name="Set Payload" doc:id="5f5f7b70-c2a3-4361-b0f5-c71c99d19fd3" />
+	</flow>
+	<flow name="errorhandlerFlow1" doc:id="3d53a11c-4080-4244-802b-0177a55c1f1c" >
+		<http:listener doc:name="Listener" doc:id="a2733277-c9d3-48c2-a3f2-07dc4a06626f" config-ref="HTTP_Listener_config" path="/sports"/>
+		<set-payload value='#["hello dharani"]' doc:name="Set Payload" doc:id="b49b86d0-9c71-4439-983f-5e0a68ad08e2" />
+	</flow>
+</mule>

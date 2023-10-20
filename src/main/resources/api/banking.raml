@@ -1,0 +1,57 @@
+#%RAML 1.0
+title: banking
+
+types:
+ dharani: !include schemas/newsdataType.raml     
+/search:
+  get:
+    queryParameters:
+     keyword:
+       type: string
+       minLength: 3
+       maxLength: 10
+    responses:
+     200:
+      body:
+       application/json:
+        example: !include examples/searchExample.raml
+  post:
+   queryParameters:
+    keyword:
+      type: string
+      minLength: 5
+      maxLength: 10  
+   responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/searchExample.raml
+              
+/News:
+  post:
+    queryParameters:
+      country:
+        required: false
+    body:
+      application/json:
+        type: dharani
+    responses:
+            201:
+              body:
+                application/json:
+                  example:
+                    {"indian news" : "Breaking news........"}
+
+/sportsNews:
+  put:
+    body:
+     application/json:
+      type: dharani []
+                    
+
+          
+
+                                             
+                           
+
+  
